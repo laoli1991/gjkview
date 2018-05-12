@@ -22,19 +22,19 @@ public class TitlePanel extends JPanel {
         p1.setBackground(Color.white);
 
         jx.setText(x);
-        jx.setFont(new Font("Arial", 1, 55));
+        jx.setFont(new Font("宋体", 1, 55));
         jx.setForeground(new Color(37, 174, 96));
         jx.setHorizontalAlignment(JLabel.CENTER);
         p1.add(jx, BorderLayout.WEST);
 
         jy.setHorizontalAlignment(JLabel.CENTER);
         jy.setText(y);
-        jy.setFont(new Font("Arial", 0, 60));
+        jy.setFont(new Font("宋体", 0, 60));
         jy.setForeground(Color.red);
         p1.add(jy, BorderLayout.CENTER);
 
         jz.setText("更新" + z+" ");
-        jz.setFont(new Font("Arial", 0, 40));
+        jz.setFont(new Font("宋体", 0, 40));
         jz.setForeground(new Color(37, 174, 96));
         jz.setHorizontalAlignment(JLabel.RIGHT);
         p1.add(jz, BorderLayout.CENTER);

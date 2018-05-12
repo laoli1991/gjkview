@@ -20,32 +20,32 @@ public class StatusPanel extends JPanel {
         JPanel panel = new JPanel(new GridLayout(1, 5, 10, 10));
         panel.setBackground(Color.white);
         j1.setText(s1);
-        j1.setFont(new Font("Arial", 0, 55));
+        j1.setFont(new Font("宋体", 0, 55));
         j1.setForeground(new Color(37, 174, 96));
         j1.setHorizontalAlignment(JLabel.CENTER);
 
         j2.setText(s2);
-        j2.setFont(new Font("Arial", 0, 55));
+        j2.setFont(new Font("宋体", 0, 55));
         j2.setForeground(Color.BLACK);
         j2.setHorizontalAlignment(JLabel.CENTER);
 
         j3.setText(s3);
-        j3.setFont(new Font("Arial", 0, 55));
+        j3.setFont(new Font("宋体", 0, 55));
         j3.setForeground(Color.BLACK);
         j3.setHorizontalAlignment(JLabel.CENTER);
 
         j4.setText(s4);
-        j4.setFont(new Font("Arial", 0, 55));
+        j4.setFont(new Font("宋体", 0, 55));
         j4.setForeground(Color.BLACK);
         j4.setHorizontalAlignment(JLabel.CENTER);
 
         j5.setText(s5);
-        j5.setFont(new Font("Arial", 0, 55));
+        j5.setFont(new Font("宋体", 0, 55));
         j5.setForeground(Color.BLACK);
         j5.setHorizontalAlignment(JLabel.CENTER);
 
         j6.setText(s6);
-        j6.setFont(new Font("Arial", 0, 55));
+        j6.setFont(new Font("宋体", 0, 55));
         j6.setForeground(Color.BLACK);
         j6.setHorizontalAlignment(JLabel.CENTER);
         panel.add(j1);
