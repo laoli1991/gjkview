@@ -13,14 +13,33 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/fastjson-1.2.47.jar</systemPath>
         </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>23.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/guava-23.0.jar</systemPath>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/okhttp-3.10.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio</artifactId>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/okio-1.14.0.jar</systemPath>
+        </dependency>
+
+
 
     </dependencies>
 

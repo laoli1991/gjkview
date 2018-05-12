@@ -60,18 +60,18 @@ public class JkViewWindow {
         mainPanel.add(titelPanel);
 
         JPanel j1 = new StockPanel(
-                "X", new JLabel(),
-                "箱", new JLabel());
+                "X", JLabelConfig.a,
+                "箱", JLabelConfig.A);
         mainPanel.add(j1);
 
         JPanel j2 = new StockPanel(
-                "X", new JLabel(),
-                "捆", new JLabel());
+                "X", JLabelConfig.b,
+                "捆", JLabelConfig.B);
         mainPanel.add(j2);
 
         JPanel j3 = new StockPanel(
-                "金额", new JLabel(),
-                "100万元", new JLabel());
+                "金额", JLabelConfig.c,
+                "100万元", JLabelConfig.C);
         mainPanel.add(j3);
 
 

@@ -23,37 +23,6 @@ import java.util.Locale;
  * @Description:
  */
 public class AppUtils {
-    public static String getLocalHostLANAddress() {
-        try {
-            InetAddress candidateAddress = null;
-            // 遍历所有的网络接口
-            for (Enumeration ifaces = NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements(); ) {
-                NetworkInterface iface = (NetworkInterface) ifaces.nextElement();
-                // 在所有的接口下再遍历IP
-                for (Enumeration inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements(); ) {
-                    InetAddress inetAddr = (InetAddress) inetAddrs.nextElement();
-                    if (!inetAddr.isLoopbackAddress()) {// 排除loopback类型地址
-                        if (inetAddr.isSiteLocalAddress()) {
-                            // 如果是site-local地址，就是它了
-                            return inetAddr.getHostAddress();
-                        } else if (candidateAddress == null) {
-                            // site-local类型的地址未被发现，先记录候选地址
-                            candidateAddress = inetAddr;
-                        }
-                    }
-                }
-            }
-            if (candidateAddress != null) {
-                return candidateAddress.getHostAddress();
-            }
-            // 如果没有发现 non-loopback地址.只能用最次选的方案
-            InetAddress jdkSuppliedAddress = InetAddress.getLocalHost();
-            return jdkSuppliedAddress.getHostAddress();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     public static String getMac() {
         String mac = "";
@@ -96,8 +65,7 @@ public class AppUtils {
             MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
             JSONObject js = new JSONObject();
-            js.put("macAddress", AppUtils.getLocalHostLANAddress());
-            js.put("ipAddress", AppUtils.getMac());
+            js.put("macAddress", AppUtils.getMac());
             OkHttpClient okHttpClient = new OkHttpClient();
             //创建一个RequestBody(参数1：数据类型 参数2传递的json串)
             RequestBody requestBody = RequestBody.create(JSON, js.toJSONString());
@@ -120,7 +88,7 @@ public class AppUtils {
                         file.createNewFile();
                     }
                     Files.write(ip, file, Charsets.UTF_8);
-                    return "连接成功！";
+                    return "连接成功！本机IP：" + rjs.get("ipAddress") ;
                 }
             }
         } catch (Exception e) {

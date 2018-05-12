@@ -14,7 +14,7 @@ public class ClientService {
     public ClientService() {
     }
 
-    public void server() {
+    public void init() {
         try {
             DatagramSocket socket = new DatagramSocket(9002);
             while (true) {
@@ -25,20 +25,29 @@ public class ClientService {
                 String msg = new String(data, 0, packet.getLength(), "UTF-8");
                 System.out.println(msg);
                 System.out.println(msg.getBytes("UTF-8").length);
-//                JSONObject x = JSON.parseObject(msg);
-//                String a = x.getString("a");
-//                String b = x.getString("b");
-//                String c = x.getString("c");
+                JSONObject x = JSON.parseObject(msg);
+                String a = x.getString("a");
+                String A = x.getString("A");
+                String b = x.getString("b");
+                String B = x.getString("B");
+                String c = x.getString("c");
+                String C = x.getString("C");
 //                String d = x.getString("d");
+//                String D = x.getString("D");
 //                String e = x.getString("e");
-//                String f = x.getString("f");
-//
-//                JLabelConfig.a.setText("  " + a);
-//                JLabelConfig.b.setText("  " + b);
-//                JLabelConfig.c.setText("  " + c);
+//                String E = x.getString("E");
+
+
+                JLabelConfig.a.setText("  " + a);
+                JLabelConfig.A.setText("  " + A);
+                JLabelConfig.b.setText("  " + b);
+                JLabelConfig.B.setText("  " + B);
+                JLabelConfig.c.setText("  " + c);
+                JLabelConfig.C.setText("  " + C);
 //                JLabelConfig.d.setText("  " + d);
+//                JLabelConfig.D.setText("  " + f);
 //                JLabelConfig.e.setText("  " + e);
-//                JLabelConfig.f.setText("  " + f);
+//                JLabelConfig.E.setText("  " + f);
             }
         } catch (Exception e) {
             e.printStackTrace();

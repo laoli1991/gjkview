@@ -1,7 +1,3 @@
-import com.google.common.base.Charsets;
-import com.google.common.base.Joiner;
-import com.google.common.io.Files;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,9 +10,6 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -38,7 +31,7 @@ public class AppMainWindow extends JFrame {
             @Override
             public void run() {
                 ClientService clientService = new ClientService();
-                clientService.server();
+                clientService.init();
             }
         }.start();
 
@@ -50,7 +43,7 @@ public class AppMainWindow extends JFrame {
                     AppUtils.sendMe(ipStr);
                 }
             }
-        }, 0, 1, TimeUnit.MINUTES);
+        }, 0, 10, TimeUnit.MINUTES);
 
 
     }
@@ -89,7 +82,7 @@ public class AppMainWindow extends JFrame {
         panel.add(ipButton);
 
         JLabel ipResponseJLabel = new JLabel("");
-        ipResponseJLabel.setBounds(150, 60, 165, 30);
+        ipResponseJLabel.setBounds(150, 60, 200, 30);
         panel.add(ipResponseJLabel);
 
 
@@ -98,9 +91,8 @@ public class AppMainWindow extends JFrame {
         panel.add(button);
         appMainWindow.getContentPane().add(panel, BorderLayout.CENTER);
 
-
         JkViewWindow d = new JkViewWindow();
-//
+
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
