@@ -26,20 +26,20 @@ public class Server {
                 String msg = new String(data, 0, packet.getLength(), "UTF-8");
                 System.out.println(msg);
                 System.out.println(msg.getBytes("UTF-8").length);
-                JSONObject x = JSON.parseObject(msg);
-                String a = x.getString("a");
-                String b = x.getString("b");
-                String c = x.getString("c");
-                String d = x.getString("d");
-                String e = x.getString("e");
-                String f = x.getString("f");
-
-                JLabelConfig.a.setText("  " + a);
-                JLabelConfig.b.setText("  " + b);
-                JLabelConfig.c.setText("  " + c);
-                JLabelConfig.d.setText("  " + d);
-                JLabelConfig.e.setText("  " + e);
-                JLabelConfig.f.setText("  " + f);
+//                JSONObject x = JSON.parseObject(msg);
+//                String a = x.getString("a");
+//                String b = x.getString("b");
+//                String c = x.getString("c");
+//                String d = x.getString("d");
+//                String e = x.getString("e");
+//                String f = x.getString("f");
+//
+//                JLabelConfig.a.setText("  " + a);
+//                JLabelConfig.b.setText("  " + b);
+//                JLabelConfig.c.setText("  " + c);
+//                JLabelConfig.d.setText("  " + d);
+//                JLabelConfig.e.setText("  " + e);
+//                JLabelConfig.f.setText("  " + f);
             }
         } catch (Exception e) {
             e.printStackTrace();

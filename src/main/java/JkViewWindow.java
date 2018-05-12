@@ -47,78 +47,44 @@ public class JkViewWindow {
         Container container = frame.getContentPane();
         container.setLayout(new BorderLayout());
 
+        JPanel hPanel = new JPanel(new GridLayout(1, 1, 10, 10));
+        hPanel.add(new HeadPanel(" 欢迎罗总视察指导工作 ", new JLabel()));
+        container.add(hPanel, BorderLayout.NORTH);
+
+
+        JPanel mainPanel = new JPanel(new GridLayout(4, 1, 10, 10));
+
         JPanel titelPanel = new JPanel(new GridLayout(1, 1, 10, 10));
-        titelPanel.add(new TitlePanel("纸100元（05版)", new JLabel(), "完整劵", new JLabel(), "2018-05-06 15:03", new JLabel()));
-        container.add(titelPanel, BorderLayout.NORTH);
+        titelPanel.add(new TitlePanel("纸100元（05版)", new JLabel(), "完整劵（原封卷）", new JLabel(), "2018-05-06 15:03", new JLabel()));
 
+        mainPanel.add(titelPanel);
 
-        JPanel mainPanel = new JPanel(new GridLayout(1, 1, 10, 10));
-        JPanel leftPanel = new JPanel(new GridLayout(6, 1, 10, 10));
-
-        JPanel j1 = new StatusPanel(
-                "", new JLabel(),
+        JPanel j1 = new StockPanel(
+                "X", new JLabel(),
                 "箱", new JLabel(),
                 "捆", new JLabel(),
                 "把", new JLabel(),
                 "合计", new JLabel(),
                 "金额", new JLabel());
-        leftPanel.add(j1);
+        mainPanel.add(j1);
 
-        JPanel j2 = new StatusPanel(
-                "原封劵", new JLabel(),
+        JPanel j2 = new StockPanel(
                 "X", new JLabel(),
+                "捆", new JLabel(),
                 "X", new JLabel(),
                 "X", new JLabel(),
                 "X", new JLabel(),
                 "X", new JLabel());
-        leftPanel.add(j2);
+        mainPanel.add(j2);
 
-        JPanel j3 = new StatusPanel(
-                "已清分", new JLabel(),
-                "X", new JLabel(),
+        JPanel j3 = new StockPanel(
+                "金额", new JLabel(),
+                "100万元", new JLabel(),
                 "X", new JLabel(),
                 "X", new JLabel(),
                 "X", new JLabel(),
                 "X", new JLabel());
-        leftPanel.add(j3);
-
-
-        JPanel j4 = new StatusPanel(
-                "未清分", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel());
-        leftPanel.add(j4);
-
-
-        JPanel j5 = new StatusPanel(
-                "已复点", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel());
-        leftPanel.add(j5);
-
-
-        JPanel j6 = new StatusPanel(
-                "未复点", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel());
-        leftPanel.add(j6);
-
-
-        JPanel rightPanel = new JPanel(new GridLayout(1, 2, 10, 10));
-        mainPanel.add(leftPanel);
-        //  mainPanel.add(rightPanel);
-
-
-        //在面板中添加按钮
+        mainPanel.add(j3);
 
 
         container.add(mainPanel, BorderLayout.CENTER);
