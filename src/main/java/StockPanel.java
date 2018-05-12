@@ -9,14 +9,14 @@ public class StockPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
-    public StockPanel(String s1, JLabel j1, String s2, JLabel j2, String s3, JLabel j3, String s4, JLabel j4, String s5, JLabel j5, String s6, JLabel j6) {
+    public StockPanel(String s1, JLabel j1, String s2, JLabel j2) {
         super(true);
         this.setBackground(Color.white);
         this.setLayout(new BorderLayout());
-        this.add(getPanel(s1, j1, s2, j2, s3, j3, s4, j4, s5, j5, s6, j6), BorderLayout.CENTER);
+        this.add(getPanel(s1, j1, s2, j2), BorderLayout.CENTER);
     }
 
-    private JPanel getPanel(String s1, JLabel j1, String s2, JLabel j2, String s3, JLabel j3, String s4, JLabel j4, String s5, JLabel j5, String s6, JLabel j6) {
+    private JPanel getPanel(String s1, JLabel j1, String s2, JLabel j2) {
         JPanel panel = new JPanel(new GridLayout(1, 2, 10, 10));
         panel.setBackground(Color.white);
         j1.setText(s1);

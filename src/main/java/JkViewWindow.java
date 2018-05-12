@@ -61,53 +61,22 @@ public class JkViewWindow {
 
         JPanel j1 = new StockPanel(
                 "X", new JLabel(),
-                "箱", new JLabel(),
-                "捆", new JLabel(),
-                "把", new JLabel(),
-                "合计", new JLabel(),
-                "金额", new JLabel());
+                "箱", new JLabel());
         mainPanel.add(j1);
 
         JPanel j2 = new StockPanel(
                 "X", new JLabel(),
-                "捆", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel());
+                "捆", new JLabel());
         mainPanel.add(j2);
 
         JPanel j3 = new StockPanel(
                 "金额", new JLabel(),
-                "100万元", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel(),
-                "X", new JLabel());
+                "100万元", new JLabel());
         mainPanel.add(j3);
 
 
         container.add(mainPanel, BorderLayout.CENTER);
 
-//        container.add(new StatusPanel("类别", JLabelConfig.h, "", JLabelConfig.a));
-//        container.add(new StatusPanel("B", JLabelConfig.i, "纸100元（05版）", new JLabel()));
-//        container.add(new StatusPanel("B", JLabelConfig.i, "b", JLabelConfig.b));
-//        container.add(new StatusPanel("B", JLabelConfig.i, "b", JLabelConfig.b));
-//        container.add(new StatusPanel("B", JLabelConfig.i, "b", JLabelConfig.b));
-//        container.add(new StatusPanel("B", JLabelConfig.i, "b", JLabelConfig.b));
-//        container.add(new StatusPanel("C", JLabelConfig.j, "c", JLabelConfig.c));
-//        container.add(new StatusPanel("D", JLabelConfig.k, "d", JLabelConfig.d));
-//        container.add(new StatusPanel("E", JLabelConfig.l, "e", JLabelConfig.e));
-//        container.add(new StatusPanel("F", JLabelConfig.m, "f", JLabelConfig.f));
-//
-//        container.add(new StatusPanel("E", JLabelConfig.l, "e", JLabelConfig.e));
-//        container.add(new StatusPanel("F", JLabelConfig.m, "f", JLabelConfig.f));
-//        container.add(new StatusPanel("E", JLabelConfig.l, "e", JLabelConfig.e));
-//        container.add(new StatusPanel("F", JLabelConfig.m, "f", JLabelConfig.f));
-//        container.add(new StatusPanel("E", JLabelConfig.l, "e", JLabelConfig.e));
-//        container.add(new StatusPanel("F", JLabelConfig.m, "f", JLabelConfig.f));
-//        container.add(new StatusPanel("E", JLabelConfig.l, "e", JLabelConfig.e));
-//        container.add(new StatusPanel("F", JLabelConfig.m, "f", JLabelConfig.f));
     }
 
 }
