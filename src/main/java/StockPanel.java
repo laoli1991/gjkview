@@ -18,7 +18,7 @@ public class StockPanel extends JPanel {
 
     private JPanel getPanel(String s1, JLabel j1, String s2, JLabel j2) {
         JPanel panel = new JPanel(new GridLayout(1, 2, 10, 10));
-        panel.setBackground(Color.white);
+        panel.setBackground(Color.LIGHT_GRAY);
         j1.setText(s1);
         j1.setFont(new Font("宋体", 0, 55));
         j1.setForeground(new Color(37, 174, 96));

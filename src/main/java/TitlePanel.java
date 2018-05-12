@@ -19,7 +19,7 @@ public class TitlePanel extends JPanel {
 
     private JPanel getUpPanel(String x, JLabel jx, String y, JLabel jy, String z, JLabel jz) {
         JPanel p1 = new JPanel(new GridLayout(1, 3, 10, 10));
-        p1.setBackground(Color.white);
+        p1.setBackground(Color.LIGHT_GRAY);
 
         jx.setText(x);
         jx.setFont(new Font("宋体", 1, 50));

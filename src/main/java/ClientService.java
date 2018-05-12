@@ -9,15 +9,14 @@ import java.net.DatagramSocket;
  * @Date: 2018/4/25 15:15
  * @Description:
  */
-public class Server {
+public class ClientService {
 
-    public Server() {
+    public ClientService() {
     }
 
     public void server() {
         try {
-            System.out.println("start===================start");
-            DatagramSocket socket = new DatagramSocket(9002);//InetAddress.getByName("172.22.67.6")
+            DatagramSocket socket = new DatagramSocket(9002);
             while (true) {
                 byte[] buf = new byte[65600];
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
@@ -43,7 +42,6 @@ public class Server {
             }
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
