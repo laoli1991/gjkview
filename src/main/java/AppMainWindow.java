@@ -41,11 +41,11 @@ public class AppMainWindow extends JFrame {
             public void run() {
                 String ipStr = AppUtils.getServerIp();
                 if (ipStr != null) {
-                    String response = AppUtils.sendMe(ipStr);
+                    String response = AppUtils.sendMe(ipStr,1);
                     ipResponseJLabel.setText(response);
                 }
             }
-        }, 0, 10, TimeUnit.MINUTES);
+        }, 5, 10, TimeUnit.MINUTES);
 
 
     }
@@ -94,6 +94,11 @@ public class AppMainWindow extends JFrame {
 
         JkViewWindow d = new JkViewWindow();
 
+        if (ipStr != null) {
+            String response = AppUtils.sendMe(ipStr,1);
+            ipResponseJLabel.setText(response);
+        }
+
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -104,7 +109,7 @@ public class AppMainWindow extends JFrame {
         ipButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String response = AppUtils.sendMe(ipText.getText());
+                String response = AppUtils.sendMe(ipText.getText(),1);
                 ipResponseJLabel.setText(response);
             }
         });
