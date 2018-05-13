@@ -86,7 +86,17 @@ public class AppUtils {
                     if (!file.exists()) {
                         file.createNewFile();
                     }
-                    ConfigStaticDatas.msgDtoBegin = JSONObject.parseObject(rjs.getString("msgDto"), MsgDto.class);
+                    MsgDto msgDto = JSONObject.parseObject(rjs.getString("msgDto"), MsgDto.class);
+                    ConfigStaticDatas.amount.setText(AppUtils.formtStr(msgDto.getAmount()));
+                    ConfigStaticDatas.commonInfo.setText(AppUtils.formtStr(msgDto.getCommonInfo()));
+                    ConfigStaticDatas.key1.setText(AppUtils.formtStr(msgDto.getKey1()));
+                    ConfigStaticDatas.key2.setText(AppUtils.formtStr(msgDto.getKey2()));
+                    ConfigStaticDatas.nowTime.setText(AppUtils.formtStr(msgDto.getNowTime())+"更新");
+                    ConfigStaticDatas.typeDesc.setText(AppUtils.formtStr(msgDto.getTypeDesc()));
+                    ConfigStaticDatas.value1.setText(AppUtils.formtStr(msgDto.getValue1()));
+                    ConfigStaticDatas.value2.setText(AppUtils.formtStr(msgDto.getValue2()));
+                    ConfigStaticDatas.voucherName.setText(AppUtils.formtStr(msgDto.getVoucherName()));
+
                     Files.write(ip, file, Charsets.UTF_8);
                     return "连接成功！本机IP：" + rjs.get("ipAddress");
                 }
