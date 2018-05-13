@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class AppMainWindow extends JFrame {
+    public static JLabel ipResponseJLabel = new JLabel("");
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -40,7 +41,8 @@ public class AppMainWindow extends JFrame {
             public void run() {
                 String ipStr = AppUtils.getServerIp();
                 if (ipStr != null) {
-                    AppUtils.sendMe(ipStr);
+                    String response = AppUtils.sendMe(ipStr);
+                    ipResponseJLabel.setText(response);
                 }
             }
         }, 0, 10, TimeUnit.MINUTES);
@@ -51,8 +53,7 @@ public class AppMainWindow extends JFrame {
     public static void init() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-                | UnsupportedLookAndFeelException e) {
+        } catch (Exception e) {
         }
         AppMainWindow appMainWindow = new AppMainWindow();
         appMainWindow.getContentPane().setLayout(new BorderLayout());
@@ -69,7 +70,7 @@ public class AppMainWindow extends JFrame {
         userLabel.setBounds(10, 20, 80, 25);
         panel.add(userLabel);
         JTextField ipText = new JTextField(20);
-        ipText.setBounds(100, 20, 165, 30);
+        ipText.setBounds(100, 20, 250, 30);
         String ipStr = AppUtils.getServerIp();
         if (ipStr != null) {
             ipText.setText(ipStr);
@@ -81,8 +82,7 @@ public class AppMainWindow extends JFrame {
         ipButton.setBounds(10, 60, 100, 50);
         panel.add(ipButton);
 
-        JLabel ipResponseJLabel = new JLabel("");
-        ipResponseJLabel.setBounds(150, 60, 200, 30);
+        ipResponseJLabel.setBounds(140, 60, 250, 30);
         panel.add(ipResponseJLabel);
 
 
