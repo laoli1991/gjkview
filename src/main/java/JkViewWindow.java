@@ -48,30 +48,33 @@ public class JkViewWindow {
         container.setLayout(new BorderLayout());
 
         JPanel hPanel = new JPanel(new GridLayout(1, 1, 10, 10));
-        hPanel.add(new HeadPanel(" 欢迎罗总视察指导工作 ", new JLabel()));
+        hPanel.add(new HeadPanel(AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getCommonInfo()), ConfigStaticDatas.commonInfo));
         container.add(hPanel, BorderLayout.NORTH);
 
 
         JPanel mainPanel = new JPanel(new GridLayout(4, 1, 10, 10));
 
         JPanel titelPanel = new JPanel(new GridLayout(1, 1, 10, 10));
-        titelPanel.add(new TitlePanel("纸100元（05版)", new JLabel(), "完整劵（原封卷）", new JLabel(), "2018-05-06 15:03", new JLabel()));
+        titelPanel.add(new TitlePanel(
+                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getVoucherName()), ConfigStaticDatas.voucherName,
+                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getTypeDesc()), ConfigStaticDatas.typeDesc,
+                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getNowTime()), ConfigStaticDatas.nowTime));
 
         mainPanel.add(titelPanel);
 
         JPanel j1 = new StockPanel(
-                "X", JLabelConfig.a,
-                "箱", JLabelConfig.A);
+                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getKey1()), ConfigStaticDatas.key1,
+                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getValue1()), ConfigStaticDatas.value1);
         mainPanel.add(j1);
 
         JPanel j2 = new StockPanel(
-                "X", JLabelConfig.b,
-                "捆", JLabelConfig.B);
+                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getKey2()), ConfigStaticDatas.key2,
+                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getValue2()), ConfigStaticDatas.value2);
         mainPanel.add(j2);
 
         JPanel j3 = new StockPanel(
-                "金额", JLabelConfig.c,
-                "100万元", JLabelConfig.C);
+                "金额", new JLabel(),
+                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getAmount()), ConfigStaticDatas.amount);
         mainPanel.add(j3);
 
 

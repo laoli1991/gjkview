@@ -1,3 +1,4 @@
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;
@@ -62,13 +63,11 @@ public class AppUtils {
 
     public static String sendMe(String ip) {
         try {
-            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
             JSONObject js = new JSONObject();
             js.put("macAddress", AppUtils.getMac());
             OkHttpClient okHttpClient = new OkHttpClient();
             //创建一个RequestBody(参数1：数据类型 参数2传递的json串)
-            RequestBody requestBody = RequestBody.create(JSON, js.toJSONString());
+            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), js.toJSONString());
             //创建一个请求对象
             Request request = new Request.Builder()
                     .url("http://" + ip + ":8080/api/add-screen")
@@ -81,19 +80,27 @@ public class AppUtils {
             if (response.isSuccessful()) {
                 //打印服务端返回结果
                 String str = response.body().string();
-                JSONObject rjs = com.alibaba.fastjson.JSON.parseObject(str);
+                JSONObject rjs = JSON.parseObject(str);
                 if ("1".equals(rjs.get("code"))) {
                     File file = new File(AppUtils.createIpTableIfNotExist());
                     if (!file.exists()) {
                         file.createNewFile();
                     }
+                    ConfigStaticDatas.msgDtoBegin = JSONObject.parseObject(rjs.getString("msgDto"), MsgDto.class);
                     Files.write(ip, file, Charsets.UTF_8);
-                    return "连接成功！本机IP：" + rjs.get("ipAddress") ;
+                    return "连接成功！本机IP：" + rjs.get("ipAddress");
                 }
             }
         } catch (Exception e) {
         }
         return "连接失败！";
+    }
+
+    public static String formtStr(String str) {
+        if (str == null) {
+            return "";
+        }
+        return str;
     }
 
 }

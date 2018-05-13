@@ -19,7 +19,7 @@ public class TitlePanel extends JPanel {
 
     private JPanel getUpPanel(String x, JLabel jx, String y, JLabel jy, String z, JLabel jz) {
         JPanel p1 = new JPanel(new GridLayout(1, 3, 10, 10));
-        p1.setBackground(Color.LIGHT_GRAY);
+        p1.setBackground(Color.white);
 
         jx.setText(x);
         jx.setFont(new Font("宋体", 1, 50));
@@ -33,8 +33,8 @@ public class TitlePanel extends JPanel {
         jy.setForeground(new Color(37, 174, 96));
         p1.add(jy, BorderLayout.CENTER);
 
-        jz.setText("更新" + z+" ");
-        jz.setFont(new Font("宋体", 0, 35));
+        jz.setText(z+"更新");
+        jz.setFont(new Font("宋体", 0, 25));
         jz.setForeground(new Color(37, 174, 96));
         jz.setHorizontalAlignment(JLabel.RIGHT);
         p1.add(jz, BorderLayout.CENTER);
