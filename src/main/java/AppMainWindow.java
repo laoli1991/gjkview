@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class AppMainWindow extends JFrame {
-    public static JLabel ipResponseJLabel = new JLabel("");
+    private static JLabel ipResponseJLabel = new JLabel("");
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -56,6 +56,7 @@ public class AppMainWindow extends JFrame {
         } catch (Exception e) {
         }
         AppMainWindow appMainWindow = new AppMainWindow();
+        appMainWindow.setTitle("金库显示系统");
         appMainWindow.getContentPane().setLayout(new BorderLayout());
         appMainWindow.setSize(new Dimension(400, 200));
         appMainWindow.setLocation(500, 200);
@@ -79,7 +80,7 @@ public class AppMainWindow extends JFrame {
 
 
         JButton ipButton = new JButton("配置服务器IP");
-        ipButton.setBounds(10, 60, 100, 50);
+        ipButton.setBounds(10, 60, 120, 50);
         panel.add(ipButton);
 
         ipResponseJLabel.setBounds(140, 60, 250, 30);
@@ -87,7 +88,7 @@ public class AppMainWindow extends JFrame {
 
 
         JButton button = new JButton("打开显示界面");
-        button.setBounds(10, 110, 100, 50);
+        button.setBounds(10, 110, 120, 50);
         panel.add(button);
         appMainWindow.getContentPane().add(panel, BorderLayout.CENTER);
 

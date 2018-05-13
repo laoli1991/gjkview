@@ -38,7 +38,7 @@ public class JkViewWindow {
         }
 
         frame = new JFrame();
-        frame.setTitle("GJK");
+        frame.setTitle("金库显示系统");
         frame.setBackground(Color.WHITE);
         frame.setUndecorated(false);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
