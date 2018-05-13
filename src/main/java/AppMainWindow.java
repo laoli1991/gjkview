@@ -41,7 +41,7 @@ public class AppMainWindow extends JFrame {
             public void run() {
                 String ipStr = AppUtils.getServerIp();
                 if (ipStr != null) {
-                    String response = AppUtils.sendMe(ipStr,1);
+                    String response = AppUtils.sendMe(ipStr,0);
                     ipResponseJLabel.setText(response);
                 }
             }
