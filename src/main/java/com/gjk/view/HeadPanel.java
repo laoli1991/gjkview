@@ -1,3 +1,5 @@
+package com.gjk.view;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;

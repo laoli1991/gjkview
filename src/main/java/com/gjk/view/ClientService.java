@@ -1,3 +1,5 @@
+package com.gjk.view;
+
 import com.alibaba.fastjson.JSONObject;
 
 import java.net.DatagramPacket;
@@ -9,13 +11,14 @@ import java.net.DatagramSocket;
  * @Description:
  */
 public class ClientService {
+    private DatagramSocket socket;
 
-    public ClientService() {
+    public ClientService(DatagramSocket socket) {
+        this.socket = socket;
     }
 
     public void init() {
         try {
-            DatagramSocket socket = new DatagramSocket(9002);
             while (true) {
                 byte[] buf = new byte[65600];
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);

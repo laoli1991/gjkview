@@ -1,8 +1,11 @@
+package com.gjk.view;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;
 import com.google.common.io.Files;
+import com.google.common.primitives.Ints;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -13,7 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
-import java.util.Enumeration;
 import java.util.Formatter;
 import java.util.List;
 import java.util.Locale;
@@ -24,10 +26,8 @@ import java.util.Locale;
  * @Description:
  */
 public class AppUtils {
-//
-//    public static int sendMe//
 
-    public static String getMac() {
+    public static String getMacAddress(Integer port) {
         String mac = "";
         try {
             InetAddress address = InetAddress.getLocalHost();
@@ -39,7 +39,7 @@ public class AppUtils {
             }
         } catch (Exception e) {
         }
-        return mac;
+        return mac + ":" + port;
     }
 
     public static String createIpTableIfNotExist() {
@@ -63,40 +63,28 @@ public class AppUtils {
         return ipStr;
     }
 
-    public static String sendMe(String ip, Integer fresh) {
+    public static String sendMe(String ip, Integer fresh, Integer port) {
         try {
-            JSONObject js = new JSONObject();
-            js.put("macAddress", AppUtils.getMac());
-            js.put("fresh", fresh);
+            AddScreenRequest addScreenRequest = new AddScreenRequest();
+            addScreenRequest.setMacAddress(getMacAddress(port));
+            addScreenRequest.setFresh(fresh);
+            addScreenRequest.setPort(port);
             OkHttpClient okHttpClient = new OkHttpClient();
-            //创建一个RequestBody(参数1：数据类型 参数2传递的json串)
-            RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), js.toJSONString());
-            //创建一个请求对象
+            RequestBody requestBody = RequestBody.create(
+                    MediaType.parse("application/json; charset=utf-8"),
+                    JSONObject.toJSONString(addScreenRequest));
             Request request = new Request.Builder()
                     .url("http://" + ip + ":8080/api/add-screen")
                     .post(requestBody)
                     .build();
-            //发送请求获取响应
-
             Response response = okHttpClient.newCall(request).execute();
-            //判断请求是否成功
             if (response.isSuccessful()) {
-                //打印服务端返回结果
-                String str = response.body().string();
-                JSONObject rjs = JSON.parseObject(str);
-                if ("1".equals(rjs.get("code"))) {
+                AddScreenReponse addScreenReponse = JSONObject.parseObject(response.body().string(), AddScreenReponse.class);
+                if (addScreenReponse.getCode() == 1) {
                     if (fresh == 1) {
-                        MsgDto msgDto = JSONObject.parseObject(rjs.getString("msgDto"), MsgDto.class);
+                        MsgDto msgDto = addScreenReponse.getMsgDto();
                         if (msgDto != null) {
-                            ConfigStaticDatas.amount.setText(AppUtils.formtStr(msgDto.getAmount()));
-                            ConfigStaticDatas.commonInfo.setText(AppUtils.formtStr(msgDto.getCommonInfo()));
-                            ConfigStaticDatas.key1.setText(AppUtils.formtStr(msgDto.getKey1()));
-                            ConfigStaticDatas.key2.setText(AppUtils.formtStr(msgDto.getKey2()));
-                            ConfigStaticDatas.nowTime.setText(AppUtils.formtStr(msgDto.getNowTime()) + "更新");
-                            ConfigStaticDatas.typeDesc.setText(AppUtils.formtStr(msgDto.getTypeDesc()));
-                            ConfigStaticDatas.value1.setText(AppUtils.formtStr(msgDto.getValue1()));
-                            ConfigStaticDatas.value2.setText(AppUtils.formtStr(msgDto.getValue2()));
-                            ConfigStaticDatas.voucherName.setText(AppUtils.formtStr(msgDto.getVoucherName()));
+                            ConfigStaticDatas.freshJLabels(msgDto);
                         }
                     }
                     File file = new File(AppUtils.createIpTableIfNotExist());
@@ -104,7 +92,7 @@ public class AppUtils {
                         file.createNewFile();
                     }
                     Files.write(ip, file, Charsets.UTF_8);
-                    return "连接成功！本机IP：" + rjs.get("ipAddress");
+                    return "连接成功！本机IP：" + addScreenReponse.getIpAddress();
                 }
             }
         } catch (Exception e) {
