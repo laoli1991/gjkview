@@ -67,7 +67,7 @@ public class AppUtils {
         try {
             JSONObject js = new JSONObject();
             js.put("macAddress", AppUtils.getMac());
-            js.put("fresh" , fresh);
+            js.put("fresh", fresh);
             OkHttpClient okHttpClient = new OkHttpClient();
             //创建一个RequestBody(参数1：数据类型 参数2传递的json串)
             RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), js.toJSONString());
@@ -85,23 +85,24 @@ public class AppUtils {
                 String str = response.body().string();
                 JSONObject rjs = JSON.parseObject(str);
                 if ("1".equals(rjs.get("code"))) {
+                    if (fresh == 1) {
+                        MsgDto msgDto = JSONObject.parseObject(rjs.getString("msgDto"), MsgDto.class);
+                        if (msgDto != null) {
+                            ConfigStaticDatas.amount.setText(AppUtils.formtStr(msgDto.getAmount()));
+                            ConfigStaticDatas.commonInfo.setText(AppUtils.formtStr(msgDto.getCommonInfo()));
+                            ConfigStaticDatas.key1.setText(AppUtils.formtStr(msgDto.getKey1()));
+                            ConfigStaticDatas.key2.setText(AppUtils.formtStr(msgDto.getKey2()));
+                            ConfigStaticDatas.nowTime.setText(AppUtils.formtStr(msgDto.getNowTime()) + "更新");
+                            ConfigStaticDatas.typeDesc.setText(AppUtils.formtStr(msgDto.getTypeDesc()));
+                            ConfigStaticDatas.value1.setText(AppUtils.formtStr(msgDto.getValue1()));
+                            ConfigStaticDatas.value2.setText(AppUtils.formtStr(msgDto.getValue2()));
+                            ConfigStaticDatas.voucherName.setText(AppUtils.formtStr(msgDto.getVoucherName()));
+                        }
+                    }
                     File file = new File(AppUtils.createIpTableIfNotExist());
                     if (!file.exists()) {
                         file.createNewFile();
                     }
-                    if (fresh == 1) {
-                        MsgDto msgDto = JSONObject.parseObject(rjs.getString("msgDto"), MsgDto.class);
-                        ConfigStaticDatas.amount.setText(AppUtils.formtStr(msgDto.getAmount()));
-                        ConfigStaticDatas.commonInfo.setText(AppUtils.formtStr(msgDto.getCommonInfo()));
-                        ConfigStaticDatas.key1.setText(AppUtils.formtStr(msgDto.getKey1()));
-                        ConfigStaticDatas.key2.setText(AppUtils.formtStr(msgDto.getKey2()));
-                        ConfigStaticDatas.nowTime.setText(AppUtils.formtStr(msgDto.getNowTime()) + "更新");
-                        ConfigStaticDatas.typeDesc.setText(AppUtils.formtStr(msgDto.getTypeDesc()));
-                        ConfigStaticDatas.value1.setText(AppUtils.formtStr(msgDto.getValue1()));
-                        ConfigStaticDatas.value2.setText(AppUtils.formtStr(msgDto.getValue2()));
-                        ConfigStaticDatas.voucherName.setText(AppUtils.formtStr(msgDto.getVoucherName()));
-                    }
-
                     Files.write(ip, file, Charsets.UTF_8);
                     return "连接成功！本机IP：" + rjs.get("ipAddress");
                 }
