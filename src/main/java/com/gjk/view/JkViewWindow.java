@@ -41,7 +41,7 @@ public class JkViewWindow {
 
         frame = new JFrame();
         frame.setTitle("金库显示系统");
-        frame.setBackground(Color.WHITE);
+        frame.setBackground(Color.blue);
         frame.setUndecorated(false);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setSize(d.width, d.height);
@@ -49,12 +49,12 @@ public class JkViewWindow {
         Container container = frame.getContentPane();
         container.setLayout(new BorderLayout());
 
-        JPanel hPanel = new JPanel(new GridLayout(1, 1, 10, 10));
-        hPanel.add(new HeadPanel(AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getCommonInfo()), ConfigStaticDatas.commonInfo));
-        container.add(hPanel, BorderLayout.NORTH);
+//        JPanel hPanel = new JPanel(new GridLayout(1, 1, 10, 10));
+//        hPanel.add(new HeadPanel(AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getCommonInfo()), ConfigStaticDatas.commonInfo));
+//        container.add(hPanel, BorderLayout.NORTH);
 
 
-        JPanel mainPanel = new JPanel(new GridLayout(4, 1, 10, 10));
+        JPanel mainPanel = new JPanel(new GridLayout(4, 1, 0, 0));
 
         JPanel titelPanel = new JPanel(new GridLayout(1, 1, 10, 10));
         titelPanel.add(new TitlePanel(
@@ -74,8 +74,7 @@ public class JkViewWindow {
                 AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getValue2()), ConfigStaticDatas.value2);
         mainPanel.add(j2);
 
-        JPanel j3 = new StockPanel(
-                "金额", new JLabel(),
+        JPanel j3 = new AmountPanel(
                 AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getAmount()), ConfigStaticDatas.amount);
         mainPanel.add(j3);
 

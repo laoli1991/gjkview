@@ -21,25 +21,25 @@ public class TitlePanel extends JPanel {
 
     private JPanel getUpPanel(String x, JLabel jx, String y, JLabel jy, String z, JLabel jz) {
         JPanel p1 = new JPanel(new GridLayout(1, 3, 10, 10));
-        p1.setBackground(Color.white);
+        p1.setBackground(Color.blue);
 
         jx.setText(x);
-        jx.setFont(new Font("宋体", 1, 50));
-        jx.setForeground(new Color(37, 174, 96));
+        jx.setFont(new Font("宋体", 1, 100));
+        jx.setForeground(Color.white);
         jx.setHorizontalAlignment(JLabel.CENTER);
         p1.add(jx, BorderLayout.WEST);
 
         jy.setHorizontalAlignment(JLabel.CENTER);
         jy.setText(y);
-        jy.setFont(new Font("宋体", 1, 50));
-        jy.setForeground(new Color(37, 174, 96));
+        jy.setFont(new Font("宋体", 1, 100));
+        jy.setForeground(Color.white);
         p1.add(jy, BorderLayout.CENTER);
 
-        jz.setText(z+"更新");
-        jz.setFont(new Font("宋体", 0, 25));
-        jz.setForeground(new Color(37, 174, 96));
-        jz.setHorizontalAlignment(JLabel.RIGHT);
-        p1.add(jz, BorderLayout.CENTER);
+//        jz.setText(z+"更新");
+//        jz.setFont(new Font("宋体", 0, 25));
+//        jz.setForeground(new Color(37, 174, 96));
+//        jz.setHorizontalAlignment(JLabel.RIGHT);
+//        p1.add(jz, BorderLayout.CENTER);
         return p1;
     }
 

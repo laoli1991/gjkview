@@ -39,7 +39,7 @@ public class AppUtils {
             }
         } catch (Exception e) {
         }
-        return mac + ":" + port;
+        return String.format("%s:%s", mac, port);
     }
 
     public static String createIpTableIfNotExist() {

@@ -25,7 +25,6 @@ public class ClientService {
                 socket.receive(packet);
                 byte[] data = packet.getData();
                 String msg = new String(data, 0, packet.getLength(), "UTF-8");
-                System.out.println(msg);
                 MsgDto msgDto = JSONObject.parseObject(msg, MsgDto.class);
                 if (msgDto != null) {
                     ConfigStaticDatas.amount.setText(AppUtils.formtStr(msgDto.getAmount()));
