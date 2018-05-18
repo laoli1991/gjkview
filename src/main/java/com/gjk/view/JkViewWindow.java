@@ -12,6 +12,8 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class JkViewWindow {
     private JFrame frame;
@@ -42,27 +44,26 @@ public class JkViewWindow {
         frame = new JFrame();
         frame.setTitle("金库显示系统");
         frame.setBackground(Color.blue);
-        frame.setUndecorated(false);
+        frame.setUndecorated(true);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setSize(d.width, d.height);
 
         Container container = frame.getContentPane();
         container.setLayout(new BorderLayout());
 
-//        JPanel hPanel = new JPanel(new GridLayout(1, 1, 10, 10));
-//        hPanel.add(new HeadPanel(AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getCommonInfo()), ConfigStaticDatas.commonInfo));
-//        container.add(hPanel, BorderLayout.NORTH);
-
-
-        JPanel mainPanel = new JPanel(new GridLayout(4, 1, 0, 0));
+        JPanel mainPanel = new JPanel(new GridLayout(5, 1, 0, 0));
 
         JPanel titelPanel = new JPanel(new GridLayout(1, 1, 10, 10));
         titelPanel.add(new TitlePanel(
-                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getVoucherName()), ConfigStaticDatas.voucherName,
-                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getTypeDesc()), ConfigStaticDatas.typeDesc,
-                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getNowTime()), ConfigStaticDatas.nowTime));
+                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getVoucherName()), ConfigStaticDatas.voucherName));
 
         mainPanel.add(titelPanel);
+
+        JPanel titelPane2 = new JPanel(new GridLayout(1, 1, 10, 10));
+        titelPane2.add(new TitlePanel(
+                AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getTypeDesc()), ConfigStaticDatas.typeDesc));
+
+        mainPanel.add(titelPane2);
 
         JPanel j1 = new StockPanel(
                 AppUtils.formtStr(ConfigStaticDatas.msgDtoBegin.getKey1()), ConfigStaticDatas.key1,
@@ -80,6 +81,15 @@ public class JkViewWindow {
 
 
         container.add(mainPanel, BorderLayout.CENTER);
+
+        frame.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                if (evt.getClickCount() == 2) {
+                    init(false);
+                }
+            }
+        });
 
     }
 

@@ -59,7 +59,7 @@ public class AppMainWindow extends JFrame {
         AppMainWindow appMainWindow = new AppMainWindow();
         appMainWindow.setTitle("金库显示系统");
         appMainWindow.getContentPane().setLayout(new BorderLayout());
-        appMainWindow.setSize(new Dimension(400, 200));
+        appMainWindow.setSize(new Dimension(400, 240));
         appMainWindow.setLocation(500, 200);
         appMainWindow.setVisible(true);
         appMainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

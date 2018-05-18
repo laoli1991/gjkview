@@ -19,20 +19,13 @@ public class AmountPanel extends JPanel {
     }
 
     private JPanel getPanel(String s1, JLabel j1) {
-        JPanel panel = new JPanel(new GridLayout(1, 2, 10, 10));
+        JPanel panel = new JPanel(new GridLayout(1, 1, 10, 10));
         panel.setBackground(Color.blue);
         j1.setText(s1);
         j1.setFont(new Font("宋体", 1, 100));
         j1.setForeground(Color.white);
         j1.setHorizontalAlignment(JLabel.CENTER);
-
-//        j2.setText(s2);
-//        j2.setFont(new Font("宋体", 1, 100));
-//        j2.setForeground(Color.white);
-//        j2.setHorizontalAlignment(JLabel.CENTER);
-
         panel.add(j1);
-//        panel.add(j2);
         return panel;
     }
 
