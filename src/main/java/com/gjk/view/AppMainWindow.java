@@ -99,10 +99,13 @@ public class AppMainWindow extends JFrame {
 
         JkViewWindow d = new JkViewWindow();
 
+
         if (ipStr != null) {
             String response = AppUtils.sendMe(ipStr, 1, port);
             ipResponseJLabel.setText(response);
         }
+
+        d.init(true);
 
         button.addActionListener(new ActionListener() {
             @Override
